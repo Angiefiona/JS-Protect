@@ -17,3 +17,22 @@ const arr1 = ["mango", "banana", "passion", "grape"];
 for (let element of arr1) {
   console.log(element);
 }
+
+// write a code to find the number of digits in a number
+function digits(num){
+  let count = 0;
+  while(num !== 0){
+    num = Math.floor(num/10);
+    count ++;
+  }
+  return count;
+}
+console.log(digits(1843));
+
+// find the largest number in an array
+let numbers = [34,76,92,45,89,123,65,7658,93,345];
+var large = numbers[0];
+for (i = 0; i<numbers.length; i++){
+  large = numbers[i]>large ? numbers[i]: large;
+}
+console.log(large);
