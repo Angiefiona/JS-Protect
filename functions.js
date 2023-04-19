@@ -30,8 +30,8 @@ function array(num,target){
   return null
 }
 let num = [2,8,0,23,5,45,76]
-Target = 23
-console.log( array(num,target))
+target = 23
+console.log( array(num , target))
 
   
 // 3. Given years between 2000 and 2023, console all the leap years in the following
@@ -87,3 +87,91 @@ function strToNum(arr) {
 }
 let nums = ["10", "24", "45", "56", "67"];
 console.log(strToNum(nums));
+
+// You are managing a hardware store and need to keep track of the inventory of various tools and equipment.
+//  You will use arrays to store the data and various functions to manipulate and analyze the data.
+// a. Create an array containing the names of all tools and equipment in the inventory.
+// b. Create a separate array with the corresponding prices of each tool and equipment.
+// c. Write a function to add a new tool or equipment to the inventory, updating both arrays.
+// d. Write a function to update the price of an existing tool or equipment.
+// e. Write a function to calculate the total value of the inventory.
+// f. Write a function to find the tool or equipment with the highest price.
+
+let inventory = ["hammer","scissors","saw","nails","pliers","tape","locks"]
+let prices = [250,300,500,20,200,150,50]
+
+let tools = {}
+inventory.forEach((item,index) => {
+  tools[item] = prices[index];
+})
+console.log(tools);
+
+function addtool(tool,price){
+  if(inventory.length){
+    inventory.push(tool)
+    prices.push(price)
+    tools[tool] = price
+  }
+  else{
+    console.log("${tool} is not added to inventory");
+  }
+
+}
+addtool("hinges",100)
+console.log(tools);
+
+function updatetool(tool, price){
+  let i = inventory.indexOf(tool)
+  if(i !== -1){
+    prices[i] = price;
+    tools[tool] = price;
+  }
+  else{
+    console.log("item not updated");
+  }
+}
+updatetool("nails", 30);
+console.log(tools);
+
+function totalprice(){
+  let sum = 0;
+  for( i = 0;i < prices.length;i++){
+    sum+=prices[i]
+  }
+  console.log({sum})
+}
+totalprice()
+
+function highestPriceTool() {
+    let highPrice = 0 ;
+    let highestPrice = -Infinity;
+  
+    for (let i = 0; i < inventory.length; i++) {
+      if (prices[i] > highestPrice) {
+        highestPrice = prices[i];
+        highPrice = inventory[i];
+      }
+    }
+  return highPrice;
+  }
+  
+  console.log(highestPriceTool());
+  
+
+
+// You are managing a pet store and need to keep track of the inventory of various pet supplies. You will use arrays to store the data and various functions to manipulate and analyze the data.
+// a. Create an array containing the names of all pet supplies in the inventory.
+// b. Create a separate array with the corresponding stock quantities of each pet supply.
+// c. Write a function to add a new pet supply to the inventory, updating both arrays.
+// d. Write a function to update the stock quantity of an existing pet supply.
+// e. Write a function to calculate the total number of pet supplies in the inventory.
+// f. Write a function to find the pet supply with the highest stock quantity.
+
+
+// You are managing a music store and need to keep track of the inventory of various musical instruments. You will use arrays to store the data and various functions to manipulate and analyze the data.
+// a. Create an array containing the names of all musical instruments in the inventory.
+// b. Create a separate array with the corresponding prices of each musical instrument.
+// c. Write a function to add a new musical instrument to the inventory, updating both arrays.
+// d. Write a function to update the price of an existing musical instrument.
+// e. Write a function to calculate the total value of the inventory.
+// f. Write a function to find the musical instrument with the lowest price.
