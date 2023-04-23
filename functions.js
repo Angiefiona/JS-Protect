@@ -133,14 +133,15 @@ function updatetool(tool, price){
 updatetool("nails", 30);
 console.log(tools);
 
-function totalprice(){
+function totalprice() {
   let sum = 0;
-  for( i = 0;i < prices.length;i++){
-    sum+=prices[i]
+  for (let i = 0; i < prices.length; i++) {
+    sum += prices[i];
   }
-  console.log({sum})
+  return sum;
 }
-totalprice()
+console.log(totalprice());
+
 
 function highestPriceTool() {
     let highPrice = 0 ;
@@ -159,19 +160,135 @@ function highestPriceTool() {
   
 
 
-// You are managing a pet store and need to keep track of the inventory of various pet supplies. You will use arrays to store the data and various functions to manipulate and analyze the data.
+// You are managing a pet store and need to keep track of the inventory of various pet supplies. 
+// You will use arrays to store the data and various functions to manipulate and analyze the data.
 // a. Create an array containing the names of all pet supplies in the inventory.
 // b. Create a separate array with the corresponding stock quantities of each pet supply.
 // c. Write a function to add a new pet supply to the inventory, updating both arrays.
 // d. Write a function to update the stock quantity of an existing pet supply.
 // e. Write a function to calculate the total number of pet supplies in the inventory.
 // f. Write a function to find the pet supply with the highest stock quantity.
+let petSupplies = ["food", "bed", "toys", "treats", "collar"];
+let stock = [100, 50, 150, 55, 45];
 
+let petInventory = {};
+petSupplies.forEach((supply, index) => {
+  petInventory[supply] = stock[index];
+});
+console.log(petInventory);
 
-// You are managing a music store and need to keep track of the inventory of various musical instruments. You will use arrays to store the data and various functions to manipulate and analyze the data.
+function addsupply(supply, quantity) {
+  petSupplies.push(supply);
+  stock.push(quantity);
+  petInventory[supply] = quantity;
+}
+addsupply("tag", 20);
+console.log(petInventory);
+
+function updateSupplies(supply, quantity) {
+  let i = petSupplies.indexOf(supply);
+
+  if (i !== -1) {
+    stock[i] = quantity;
+    petInventory[supply] = quantity;
+  } else {
+    console.log("stock not updated");
+  }
+}
+updateSupplies("tag", 35);
+console.log(petInventory);
+
+function totalSupply() {
+  let sum = 0;
+  for (const stockQuantity of stock) {
+    sum += stockQuantity;
+  }
+  console.log(sum);
+}
+totalSupply();
+
+function highestPetStock() {
+  let highStock = "";
+  let highestStock = 0;
+
+  for (let i = 0; i < petSupplies.length; i++) {
+    if (stock[i] > highestStock) {
+      highestStock = stock[i];
+      highStock = petSupplies[i];
+    }
+  }
+  return highStock;
+}
+console.log(highestPetStock());
+
+// You are managing a music store and need to keep track of the inventory of various musical instruments.
+//  You will use arrays to store the data and various functions to manipulate and analyze the data.
 // a. Create an array containing the names of all musical instruments in the inventory.
 // b. Create a separate array with the corresponding prices of each musical instrument.
 // c. Write a function to add a new musical instrument to the inventory, updating both arrays.
 // d. Write a function to update the price of an existing musical instrument.
 // e. Write a function to calculate the total value of the inventory.
 // f. Write a function to find the musical instrument with the lowest price.
+
+let instruments = ["violin", "cello", "guitar", "flute", "drum", "piano", "saxophone", "clarinet", "trumpet"];
+let instrumentPrices = [1500, 3500, 2500, 1500, 5400, 7000, 4500, 3500, 5600];
+
+let musicalInstruments = [];
+instruments.forEach((instrument, index) => {
+  musicalInstruments.push({name: instrument, price: instrumentPrices[index]});
+});
+
+console.log(musicalInstruments);
+
+function addInstrument(instrument, instrumentPrice) {
+  if (instruments.length < 10) {
+    instruments.push(instrument);
+    instrumentPrices.push(instrumentPrice);
+    musicalInstruments.push({name: instrument, price: instrumentPrice});
+    console.log("Instrument has been added.");
+  } else {
+    console.log("Music instrument storage is full.");
+  }
+}
+
+addInstrument("trombone", 4500);
+console.log(musicalInstruments);
+
+function updateInstrument() {
+  for (let instrument of musicalInstruments) {
+    if (instrument.name === "piano") {
+      instrument.price = 8000;
+    }
+  }
+}
+
+updateInstrument();
+console.log(musicalInstruments);
+
+function calculateInventoryTotal() {
+  const total = musicalInstruments.reduce((accumulator, instrument) => {
+    return accumulator + instrument.price;
+  }, 0);
+
+  return total;
+}
+
+console.log(calculateInventoryTotal());
+
+function findInstrumentWithLowestPrice() {
+  const lowestPriceInstrument = musicalInstruments.reduce((lowestPriceInstrument, instrument) => {
+    if (instrument.price < lowestPriceInstrument.price) {
+      return instrument;
+    } else {
+      return lowestPriceInstrument;
+    }
+  });
+
+  return lowestPriceInstrument;
+}
+
+console.log(findInstrumentWithLowestPrice());
+
+
+
+
