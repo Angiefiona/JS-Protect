@@ -139,6 +139,7 @@ console.log(charString);
 // and returns the character that appears the most frequently in the string.
 
 
+
 // Write a function that takes a string as input
 //  and returns the number of times each character appears in the string.
 
