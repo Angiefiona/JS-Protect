@@ -64,7 +64,6 @@ for (let i = 0; i < arr1.length; i++) {
     break;
   }
 }
-
 console.log(null); 
 
 let arr3 = [3, 6, 12, 89, 45, 1, 23];
